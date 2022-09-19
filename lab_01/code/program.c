@@ -29,8 +29,6 @@
             return false;
         }
 
-        printf("transfer_license: %s\n", LICENSE_KEY);
-        printf("current_license: %s\n", current_key);
         if (strcmp(current_key, LICENSE_KEY) != 0){
             return false;
         }    
@@ -47,7 +45,6 @@ int main(void)
         printf("Ошибка лицензии.");
     }
     else{
-        printf("Установка выполнена успешно.\n");
         printf("Запущена программа ...\n");
     }
 
