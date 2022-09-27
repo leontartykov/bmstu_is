@@ -5,5 +5,7 @@
 #include <random> 
 
 #define COUNT_SYMBOLS 256
+#define CYPHER_FILE "out/cipher_out.bin"
+#define ORIGIN_FILE "out/origin_out.bin"
 
 #endif

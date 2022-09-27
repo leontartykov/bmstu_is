@@ -8,7 +8,7 @@ bool read_bin_file(std::unique_ptr<unsigned char []> &plain_buffer, int &file_si
     std::ifstream file;
 
     if (file_name.empty()){
-        std::cout << "Файл " << file_name << "пуст\n";
+        std::cout << "Указано пустое имя файла.\n";
         return false;
     }
 
@@ -44,34 +44,27 @@ bool read_bin_file(std::unique_ptr<unsigned char []> &plain_buffer, int &file_si
     return success;
 }
 
-bool write_bin_file(std::unique_ptr<unsigned char []> &cipher_buffer, int &buffer_size, std::string old_file_name){
-    int error = false;
-    std::string file_name = "file_name.bin";
+bool write_bin_file(std::unique_ptr<unsigned char []> &cipher_buffer, int &buffer_size, std::string file_name){
+    int success = true;
     std::ofstream file;
 
-    std::cout << "file_name: " << file_name << "\n";
     file.open(file_name, std::ios::out | std::ios::binary);
 
     if (!file.is_open()){
         std::cout << "Ошибка открытия файла на запись " << file_name << "\n";
-        error = true;
+        success = false;
     }
     else{
-        for (int i = 0; i < buffer_size; i++){
-            std::cout << cipher_buffer[i];
-        }
         auto buffer_data = cipher_buffer.get();
-        //char buffer_data[50] = "fefgefefe\0";
         file.write(reinterpret_cast<const char *>(buffer_data), buffer_size);
             
-        if (!file.good())
-        {
-            std::cout << "There was an error while saving buffer data to file.";
+        if (!file.good()){
+            std::cout << "Ошибка записи данных в файл" << file_name << "\n";
+            success = false;
         }
-        //std::cout << "Содержимое файла: " << buffer;
     }
 
     file.close();
 
-    return error;
+    return success;
 }
