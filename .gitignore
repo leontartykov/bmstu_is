@@ -1,4 +1,4 @@
 *.out
 *.o
 *.exe
-./lab_02/out/*
+./lab_02/out
