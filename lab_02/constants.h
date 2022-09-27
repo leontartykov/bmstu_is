@@ -2,7 +2,8 @@
 #define _CONSTANTS_H_
 
 #include <algorithm>
-#include <random> 
+#include <random>
+#include <iostream> 
 
 #define COUNT_SYMBOLS 256
 #define CYPHER_FILE "out/cipher_out.bin"

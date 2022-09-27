@@ -68,3 +68,46 @@ bool write_bin_file(std::unique_ptr<unsigned char []> &cipher_buffer, int &buffe
 
     return success;
 }
+
+bool read_txt_file(std::array<int, COUNT_SYMBOLS> &plug_buffer, int file_size, std::string file_name)
+{
+    int success = true, buffer_size;
+    std::ifstream file;
+
+    if (file_name.empty()){
+        std::cout << "Указано пустое имя файла.\n";
+        return false;
+    }
+
+    file.open(file_name, std::ios::in);
+
+    if (file.fail()){
+        std::cout << "Ошибка открытия файла на чтение" << file_name << "\n";
+        return false;
+    }
+
+    // define file size
+    file.seekg(0, std::ios::end);
+    file_size = file.tellg();
+
+    if (file_size == 0){
+        std::cout << "Файл пуст \n";
+        success = false;
+    }
+    else{
+        file.seekg(0, std::ios::beg);
+
+        // read data from txt file
+        //std::cout << "\nplug_file: \n";
+        for (int i = 0; i < COUNT_SYMBOLS && success == true; i++){
+            file >> plug_buffer[i];
+            if (file.fail()){
+                success = false;
+            }
+            //std::cout << plug_buffer[i] << " ";
+        }
+    }
+
+    file.close();
+    return success;
+}

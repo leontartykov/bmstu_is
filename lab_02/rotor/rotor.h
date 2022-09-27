@@ -2,8 +2,17 @@
 #define _ROTOR_H_
 
 #include <array>
+#include <memory>
 #include "../constants.h"
+
 #define COUNT_ROTORS 3
+#define FAST_ROTOR_CONFIG_FILE "config_data/fast_rotor.txt"
+#define MIDDLE_ROTOR_CONFIG_FILE "config_data/middle_rotor.txt"
+#define SLOW_ROTOR_CONFIG_FILE "config_data/slow_rotor.txt"
+
+static std::string rotors[3] = {FAST_ROTOR_CONFIG_FILE,
+             MIDDLE_ROTOR_CONFIG_FILE, 
+             SLOW_ROTOR_CONFIG_FILE};
 
 class Rotor
 {
@@ -16,7 +25,7 @@ class Rotor
 
     public:
         Rotor() = default;
-        Rotor(int seed);
+        Rotor(std::string file_name);
         explicit Rotor(const Rotor &rotor);
 
         ~Rotor() = default;
@@ -32,6 +41,8 @@ class Rotor
         void output_shuffled_seq();
 
         void output_values();
+
+        void set_values(std::array<int, COUNT_SYMBOLS> &rotor);
 };
 
 #endif

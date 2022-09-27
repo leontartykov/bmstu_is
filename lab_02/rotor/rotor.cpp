@@ -1,8 +1,14 @@
 #include <iostream>
 #include "rotor.h"
+#include "../io/io.h"
+#include "../constants.h"
 
-Rotor::Rotor(int seed){
-    // init original sequence
+Rotor::Rotor(std::string file_name){
+    std::array<int, COUNT_SYMBOLS> rotor;
+    read_txt_file(rotor, COUNT_SYMBOLS, file_name);
+
+    __shuffled_seq = std::move(rotor);
+    /*// init original sequence
     for (int i = 0; i < COUNT_SYMBOLS; i++){
         __original_seq[i] = i;
     }
@@ -10,7 +16,7 @@ Rotor::Rotor(int seed){
     // shuffled sequence
     __shuffled_seq = __original_seq;
     std::shuffle(__shuffled_seq.begin(), __shuffled_seq.begin() + COUNT_SYMBOLS, 
-                std::default_random_engine(seed));
+                std::default_random_engine(seed));*/
 }
 
 void Rotor::output_orig_seq(){
@@ -27,6 +33,10 @@ void Rotor::output_shuffled_seq(){
         std::cout << seq_elem << ' ';
     }
     std::cout << "\n";
+}
+
+void Rotor::set_values(std::array<int, COUNT_SYMBOLS> &rotor){
+    __shuffled_seq = std::move(rotor);
 }
 
 void Rotor::__reverse(int i, int j){

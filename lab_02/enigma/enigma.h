@@ -20,6 +20,7 @@ class Enigma
         std::unique_ptr<unsigned char []> encrypt(std::unique_ptr<unsigned char []> &plain_buffer, int &buffer);
         void reset();
         void output_rotor_values();
+        void output_reflector_values();
 };
 
 #endif

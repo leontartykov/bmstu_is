@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     
     std::cout << "Шифрование и дешифровка выполнены успешно.\n";
     std::cout << "Зашифрованный файл: " << CYPHER_FILE << "\n"; 
-    std::cout << "Расшифрованный файл: " << ORIGIN_FILE << "\n"; 
+    std::cout << "Расшифрованный файл: " << ORIGIN_FILE << "\n";
 
     return EXIT_SUCCESS;
 }

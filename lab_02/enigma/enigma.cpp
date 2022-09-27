@@ -1,19 +1,22 @@
 #include <chrono>
 #include <iostream>
 #include "enigma.h"
-#include "../rotor/rotor.h"
-#include "../reflector/reflector.h"
 
 Enigma::Enigma()
 {
-    int seed;
+    for (int i = 0; i < COUNT_ROTORS; i++){
+        __rotors[i] = Rotor(rotors[i]);
+    }
+
+    __reflector = Reflector(REFLECTOR_CONFIG_FILE);
+    /*int seed;
     for (int i = 0; i < COUNT_ROTORS; i++){
         seed = std::chrono::system_clock::now().time_since_epoch().count();
         __rotors[i] = Rotor(seed);
     }
 
     seed = std::chrono::system_clock::now().time_since_epoch().count();
-    __reflector = Reflector(seed);
+    __reflector = Reflector(seed);*/
 }
 
 std::unique_ptr<unsigned char []> Enigma::encrypt(std::unique_ptr<unsigned char []> &plain_buffer, int &buffer_size){
@@ -61,4 +64,8 @@ void Enigma::output_rotor_values(){
     for (int i = 0; i < COUNT_ROTORS; i++){
         __rotors[i].output_values();
     }
+}
+
+void Enigma::output_reflector_values(){
+    __reflector.output_reflector_values();
 }
