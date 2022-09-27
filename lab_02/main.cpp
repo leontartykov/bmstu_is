@@ -35,6 +35,8 @@ int main(int argc, char *argv[])
             enigma.reset();
             //decryption
             origin_buffer = enigma.encrypt(cipher_buffer, file_size);
+
+            write_bin_file(origin_buffer, file_size, argv[1]);
             /*for (int i = 0; i < file_size; i++){
                 std::cout << "шифр: " << int(cipher_buffer[i]) << " ";
                 std::cout << "дешифрация: " << static_cast<int>(origin_buffer[i]) << "\n";

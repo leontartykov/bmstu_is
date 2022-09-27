@@ -23,15 +23,12 @@ std::unique_ptr<unsigned char []> Enigma::encrypt(std::unique_ptr<unsigned char 
     for (int i = 0; i < buffer_size; i++){
         cipher_int_buffer[i] = __encrypt_symbol(plain_buffer[i]);
         cipher_char_buffer[i] = static_cast<unsigned char>(cipher_int_buffer[i]);
-        //std::cout << "plain_number: " << int(plain_buffer[i]) << " ";
-        //std::cout << "cipher_int_buffer[i]: " << cipher_int_buffer[i] << " cipher_char_buffer[i]: " << static_cast<int>(cipher_char_buffer[i]) << "\n";
     }
 
     return cipher_char_buffer;
 }
 
 int Enigma::__encrypt_symbol(int plain_symbol){
-    //std::cout << "plain_symbol: " << plain_symbol << "\n";
     int encrypted = plain_symbol;
     for (int j = 0; j < COUNT_ROTORS; j++){
         encrypted = __rotors[j].forward(encrypted);
@@ -44,8 +41,6 @@ int Enigma::__encrypt_symbol(int plain_symbol){
     }
 
     __rotors[0].rotate();
-    //std::cout << "\nROTATE: symbol " << plain_symbol << "\n";
-    //this->output_rotor_values();
 
     for (int j = 1; j < COUNT_ROTORS; j++){
         if (__rotors[j - 1].is_full_cycle()){
