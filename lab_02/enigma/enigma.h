@@ -12,12 +12,13 @@ class Enigma
         Rotor __rotors[COUNT_ROTORS]; // 0 - fast, 1 - middle, 2 - slow
         Reflector __reflector;
 
-        int __encrypt_symbol(int plain_symbol);
+        int __encipher_symbol(int plain_symbol);
     public:
         Enigma();
 
         ~Enigma() = default;
-        std::unique_ptr<unsigned char []> encrypt(std::unique_ptr<unsigned char []> &plain_buffer, int &buffer);
+        std::unique_ptr<unsigned char []> encipher(std::unique_ptr<unsigned char []> &plain_buffer, int &buffer);
+        std::unique_ptr<unsigned char []> decipher(std::unique_ptr<unsigned char []> &plain_buffer, int &buffer_size);
         void reset();
         void output_rotor_values();
         void output_reflector_values();

@@ -22,11 +22,11 @@ int main(int argc, char *argv[])
     std::unique_ptr<unsigned char []> cipher_buffer, origin_buffer;
 
     //encryption
-    cipher_buffer = enigma.encrypt(plain_buffer, file_size);
+    cipher_buffer = enigma.encipher(plain_buffer, file_size);
 
     enigma.reset();
     //decryption
-    origin_buffer = enigma.encrypt(cipher_buffer, file_size);
+    origin_buffer = enigma.decipher(cipher_buffer, file_size);
 
     if (!write_bin_file(cipher_buffer, file_size, CYPHER_FILE)){
         return EXIT_FAILURE;
