@@ -21,11 +21,11 @@ int main(int argc, char *argv[])
     Enigma enigma;
     std::unique_ptr<unsigned char []> cipher_buffer, origin_buffer;
 
-    //encryption
+    //enciphering
     cipher_buffer = enigma.encipher(plain_buffer, file_size);
 
     enigma.reset();
-    //decryption
+    //deciphering
     origin_buffer = enigma.decipher(cipher_buffer, file_size);
 
     if (!write_bin_file(cipher_buffer, file_size, CYPHER_FILE)){
