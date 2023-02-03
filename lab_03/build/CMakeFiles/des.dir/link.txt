@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/des.dir/main.cpp.o CMakeFiles/des.dir/des.cpp.o -o des 

@@ -1,3 +1,0 @@
-/home/lev/Desktop/lab_03/build/CMakeFiles/des.dir
-/home/lev/Desktop/lab_03/build/CMakeFiles/edit_cache.dir
-/home/lev/Desktop/lab_03/build/CMakeFiles/rebuild_cache.dir
